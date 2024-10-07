@@ -6,8 +6,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,6 +36,10 @@ class MainActivity : ComponentActivity() {
                     onImplicitClick = {
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://example.com"))
                         startActivity(intent)
+                    },
+                    onViewImageClick = {
+                        val intent = Intent(this, ViewImageActivity::class.java)
+                        startActivity(intent)
                     }
                 )
                 }
@@ -37,7 +48,7 @@ class MainActivity : ComponentActivity() {
     }
 
 @Composable
-fun MainScreen(onExplicitClick: () -> Unit, onImplicitClick: () -> Unit) {
+fun MainScreen(onExplicitClick: () -> Unit, onImplicitClick: () -> Unit, onViewImageClick: () -> Unit) {
     Scaffold (
         modifier = Modifier.fillMaxSize(),
         content = { padding ->
@@ -59,6 +70,12 @@ fun MainScreen(onExplicitClick: () -> Unit, onImplicitClick: () -> Unit) {
                 Button(onClick = onImplicitClick) {
                     Text(text = "Implicit")
                 }
+                Spacer(modifier = Modifier.height(16.dp))
+
+                //View Image button
+                Button(onClick = onViewImageClick) {
+                    Text(text = "View Image")
+                }
             }
         }
     )
@@ -68,6 +85,6 @@ fun MainScreen(onExplicitClick: () -> Unit, onImplicitClick: () -> Unit) {
 @Composable
 fun MainScreenPreview() {
     Assignment20Theme {
-        MainScreen(onExplicitClick = {}, onImplicitClick = {})
+        MainScreen(onExplicitClick = {}, onImplicitClick = {}, onViewImageClick = {})
 }
 }
