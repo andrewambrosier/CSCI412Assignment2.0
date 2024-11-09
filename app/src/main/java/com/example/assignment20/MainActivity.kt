@@ -17,6 +17,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.assignment20.ui.theme.Assignment20Theme
@@ -61,7 +63,9 @@ fun MainScreen(onExplicitClick: () -> Unit, onImplicitClick: () -> Unit, onViewI
                 Spacer(modifier = Modifier.height(13.dp))
 
                 //Explicit button
-                Button(onClick = onExplicitClick) {
+                Button(onClick = onExplicitClick,
+                modifier = Modifier.semantics{ contentDescription = "button_explicit"})
+                {
                     Text(text = "Explicit")
                 }
                 Spacer(modifier = Modifier.height(16.dp))
