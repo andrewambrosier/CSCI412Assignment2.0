@@ -6,6 +6,10 @@
         android:name="android.hardware.camera"
         android:required="false" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.example.assignment20.MSE412" />
+    <permission
+        android:name="com.example.assignment20.MSE412"
+        android:protectionLevel="dangerous" />
 
 
     <application
@@ -33,7 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".SecondActivity"
+            android:exported="true"
+            android:permission="com.example.assignment20.MSE412"/>
     </application>
 
 </manifest>
